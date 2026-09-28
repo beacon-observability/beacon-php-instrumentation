@@ -16,7 +16,7 @@ Beacon PHP Instrumentation 是 Beacon PHP 使用的原生自动插桩扩展，�
 ## 当前基线
 
 - 官方扩展版本：`1.4.2`
-- Beacon 版本：`0.1.0`
+- Beacon 版本：`1.0.0`
 - PHP 验证范围：`8.2` 和 `8.4`，另在 macOS 与 Windows 上进行代表性构建
 
 精确的官方基线提交见 [`beacon/upstream.lock.json`](beacon/upstream.lock.json)。
