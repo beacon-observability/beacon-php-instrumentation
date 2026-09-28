@@ -2,12 +2,12 @@
 
 Beacon PHP Instrumentation 是 Beacon PHP 使用的原生自动插桩扩展，基于 [OpenTelemetry PHP Instrumentation](https://github.com/open-telemetry/opentelemetry-php-instrumentation) 维护。
 
-本仓库采用非 Fork 的完整源码下游方式，保留官方 Git 历史，并吸收既有的跨平台构建与制品经验。当前处于开发和发行准备阶段，尚无 Beacon PHP Instrumentation 正式版本。
+本仓库采用非 Fork 的完整源码下游方式，保留官方 Git 历史，并吸收既有的跨平台构建与制品经验。
 
 ## 仓库职责
 
 - 提供 PHP 运行时函数与方法 Hook 所需的 `opentelemetry` 原生扩展。
-- 构建 Linux、Windows 和 PECL 兼容源码候选制品。
+- 构建 Linux、Windows 和 PECL 兼容源码制品。
 - 跟踪固定的官方扩展基线，并维护必要的 Beacon 下游差异。
 - 不承载框架、数据库或客户端的具体 Span 创建逻辑；这些组件插桩由 [`beacon-php`](https://github.com/beacon-observability/beacon-php) 维护。
 
@@ -16,7 +16,7 @@ Beacon PHP Instrumentation 是 Beacon PHP 使用的原生自动插桩扩展，�
 ## 当前基线
 
 - 官方扩展版本：`1.4.2`
-- Beacon 开发版本：`0.1.0-dev`
+- Beacon 版本：`0.1.0`
 - PHP 验证范围：`8.2` 和 `8.4`，另在 macOS 与 Windows 上进行代表性构建
 
 精确的官方基线提交见 [`beacon/upstream.lock.json`](beacon/upstream.lock.json)。
@@ -39,7 +39,7 @@ php --ri opentelemetry
 php -r 'echo constant("OpenTelemetry\\Instrumentation\\BEACON_DISTRIBUTION"), PHP_EOL;'
 ```
 
-候选二进制和源码包只用于开发验收。正式发行前必须完成 [`beacon/RELEASING.md`](beacon/RELEASING.md) 中的检查。
+正式制品由 [GitHub Releases](https://github.com/beacon-observability/beacon-php-instrumentation/releases) 提供。安装二进制前须匹配 PHP 版本、线程安全模式、操作系统与架构，并使用随 Release 提供的 `SHA256SUMS` 校验文件。
 
 ## 开发文档
 
