@@ -8,10 +8,5 @@
     "commit": "273e09e15524ac3fa4f45120c0c2e7674e83ba2d",
     "extension_version": "1.4.2"
   },
-  "legacy": {
-    "repository": "https://github.com/GuanceCloud/opentelemetry-php-instrumentation.git",
-    "branch": "gtrace",
-    "commit": "5c4024796fa06329fd50c2178d8fda8d2e16d338"
-  },
   "distribution": "Beacon"
 }

@@ -5,10 +5,9 @@
 ## 维护模型
 
 - 官方主来源：`open-telemetry/opentelemetry-php-instrumentation`。
-- 历史自有来源：`GuanceCloud/opentelemetry-php-instrumentation` 的 `gtrace` 分支。
 - Beacon 主线：官方完整历史之上的非 Fork 下游仓库。
 
-初始化开发分支以官方 `1.4.2` 为代码基线，并将旧 `gtrace` 分支合入 Git 祖先关系。旧分支中的构建、校验和示例按当前官方代码重新适配，不沿用旧 `gtrace` 品牌或旧扩展版本。
+初始化开发分支以官方 `1.4.2` 为代码基线。跨平台构建、校验和示例均按当前官方代码重新适配。
 
 ## 使用边界
 

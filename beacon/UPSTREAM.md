@@ -4,7 +4,6 @@
 
 - `origin`：`beacon-observability/beacon-php-instrumentation`，Beacon 下游。
 - `upstream`：`open-telemetry/opentelemetry-php-instrumentation`，官方只读来源。
-- `legacy`：`GuanceCloud/opentelemetry-php-instrumentation`，旧实现只读来源。
 
 ## 同步步骤
 
@@ -14,6 +13,4 @@
 4. 保留并重新验证 Beacon 发行标识、项目校验、制品构建和组件联调。
 5. 更新 `beacon/upstream.lock.json` 中的官方标签、提交和扩展版本。
 6. 运行项目校验、PHPT、跨平台构建以及 `beacon-php` 自动插桩联调。
-7. 通过 PR 合并；不直接向 `upstream` 或 `legacy` 推送。
-
-旧 `gtrace` 分支只作为历史来源。后续不从该分支持续同步，也不把它的版本号当作官方或 Beacon 的当前版本。
+7. 通过 PR 合并；不直接向 `upstream` 推送。
