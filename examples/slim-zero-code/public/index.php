@@ -34,4 +34,3 @@ $app->get('/upstream', function (ServerRequest $request, Response $response): Re
 });
 
 $app->run();
-
