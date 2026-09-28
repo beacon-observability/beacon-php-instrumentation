@@ -15,4 +15,4 @@
 - 自动插桩：本扩展提供 Hook 能力，Composer 插桩包负责创建 Span。
 - Beacon 发行标识：扩展保持上游模块名 `opentelemetry` 与兼容版本，同时公开 `OpenTelemetry\\Instrumentation\\BEACON_DISTRIBUTION` 常量和 phpinfo 发行来源。
 
-当前仅提供开发候选制品，不存在正式安装入口或支持承诺。
+正式制品通过 [GitHub Releases](https://github.com/beacon-observability/beacon-php-instrumentation/releases) 发布；二进制扩展必须与 PHP 版本、线程安全模式、操作系统和架构完全匹配。
