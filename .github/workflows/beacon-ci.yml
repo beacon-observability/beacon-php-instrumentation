@@ -102,7 +102,9 @@ jobs:
   windows:
     name: Windows / PHP ${{ matrix.php }} / ${{ matrix.ts }}
     needs: validate
-    runs-on: windows-2025
+    # PHP 8.4 binaries currently target the VS17/14.44 toolset. windows-2025
+    # defaults to VS18/14.51, which produces an extension PHP cannot load.
+    runs-on: windows-2022
     strategy:
       fail-fast: false
       matrix:
