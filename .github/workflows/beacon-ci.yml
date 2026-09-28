@@ -22,6 +22,8 @@ jobs:
           persist-credentials: false
       - name: Validate Beacon metadata
         run: python3 beacon/scripts/check-project.py
+      - name: Validate zero-code verifier
+        run: bash -n examples/slim-zero-code/verify-http.sh
       - name: Check C formatting
         uses: jidicula/clang-format-action@654a770daa28443dd111d133e4083e21c1075674 # v4.18.0
         with:
