@@ -144,6 +144,10 @@ PHP_MINIT_FUNCTION(opentelemetry) {
 
     REGISTER_INI_ENTRIES();
 
+    REGISTER_STRING_CONSTANT(
+        "OpenTelemetry\\Instrumentation\\BEACON_DISTRIBUTION",
+        PHP_OPENTELEMETRY_DISTRIBUTION, CONST_CS | CONST_PERSISTENT);
+
     check_conflicts();
 
     if (!OTEL_G(disabled)) {
@@ -165,6 +169,8 @@ PHP_MINFO_FUNCTION(opentelemetry) {
                              OTEL_G(disabled) ? "disabled (conflict)"
                                               : "enabled");
     php_info_print_table_row(2, "extension version", PHP_OPENTELEMETRY_VERSION);
+    php_info_print_table_row(2, "extension distribution",
+                             PHP_OPENTELEMETRY_DISTRIBUTION);
     php_info_print_table_end();
     DISPLAY_INI_ENTRIES();
 }

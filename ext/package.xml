@@ -2,8 +2,8 @@
 <package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.9.5" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
   <name>opentelemetry</name>
   <channel>pecl.php.net</channel>
-  <summary>OpenTelemetry auto-instrumentation support extension</summary>
-  <description>https://github.com/open-telemetry/opentelemetry-php-instrumentation</description>
+  <summary>Beacon distribution of the OpenTelemetry auto-instrumentation extension</summary>
+  <description>https://github.com/beacon-observability/beacon-php-instrumentation</description>
   <lead>
     <name>Brett McBride</name>
     <user>brettmc</user>
@@ -27,7 +27,7 @@
     <api>stable</api>
   </stability>
   <license uri="https://opensource.org/license/apache-2-0/" filesource="LICENSE">Apache 2.0</license>
-  <notes>See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.4.2</notes>
+  <notes>Beacon development distribution based on OpenTelemetry PHP Instrumentation 1.4.2.</notes>
   <contents>
     <dir baseinstalldir="/" name="/">
       <file baseinstalldir="/" name=".clang-format" role="src"/>
@@ -42,6 +42,7 @@
       <file name="LICENSE" role="doc"/>
       <dir name="tests">
         <file name="001.phpt" role="test"/>
+        <file name="beacon_distribution.phpt" role="test"/>
         <file name="002.phpt" role="test"/>
         <file name="003.phpt" role="test"/>
         <file name="004.phpt" role="test"/>

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "product": "Beacon PHP Instrumentation",
+  "beacon_version": "0.1.0-dev",
+  "upstream": {
+    "repository": "https://github.com/open-telemetry/opentelemetry-php-instrumentation.git",
+    "tag": "1.4.2",
+    "commit": "273e09e15524ac3fa4f45120c0c2e7674e83ba2d",
+    "extension_version": "1.4.2"
+  },
+  "legacy": {
+    "repository": "https://github.com/GuanceCloud/opentelemetry-php-instrumentation.git",
+    "branch": "gtrace",
+    "commit": "5c4024796fa06329fd50c2178d8fda8d2e16d338"
+  },
+  "distribution": "Beacon"
+}
