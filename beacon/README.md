@@ -1,6 +1,6 @@
 # Beacon PHP Instrumentation 工程说明
 
-本仓库负责 PHP 自动插桩所需的原生 Hook 扩展。组件级 Span 创建逻辑和 Beacon Composer 聚合包由 [`beacon-php`](https://github.com/beacon-observability/beacon-php) 负责。
+本仓库负责 PHP 自动插桩所需的原生 Hook 扩展。[`beacon-php`](https://github.com/beacon-observability/beacon-php) 负责 Agent、依赖编排和诊断，组件级 Span 创建逻辑直接来自官方 OpenTelemetry Composer 包。
 
 ## 维护模型
 

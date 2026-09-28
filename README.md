@@ -9,9 +9,9 @@ Beacon PHP Instrumentation 是 Beacon PHP 使用的原生自动插桩扩展，�
 - 提供 PHP 运行时函数与方法 Hook 所需的 `opentelemetry` 原生扩展。
 - 构建 Linux、Windows 和 PECL 兼容源码制品。
 - 跟踪固定的官方扩展基线，并维护必要的 Beacon 下游差异。
-- 不承载框架、数据库或客户端的具体 Span 创建逻辑；这些组件插桩由 [`beacon-php`](https://github.com/beacon-observability/beacon-php) 维护。
+- 不承载框架、数据库或客户端的具体 Span 创建逻辑；[`beacon-php`](https://github.com/beacon-observability/beacon-php) 负责 Agent 编排，并直接安装官方 OpenTelemetry Composer 插桩包。
 
-手动插桩只依赖 OpenTelemetry PHP API/SDK，不需要加载本扩展。自动插桩需要同时安装本扩展和相应的 Composer 插桩包，因此两种使用方式不会被强制混合。
+手动插桩只依赖 OpenTelemetry PHP API/SDK，不需要加载本扩展。自动插桩需要同时安装本扩展、`beacon-php` Agent 包和应用实际使用的官方 Composer 插桩包。Beacon 不维护完整的 PHP Contrib 下游镜像。
 
 ## 当前基线
 
