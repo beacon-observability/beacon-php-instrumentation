@@ -2,7 +2,7 @@
 
 Beacon PHP Instrumentation 是 Beacon PHP 使用的原生自动插桩扩展，基于 [OpenTelemetry PHP Instrumentation](https://github.com/open-telemetry/opentelemetry-php-instrumentation) 维护。
 
-本仓库采用非 Fork 的完整源码下游方式，保留官方 Git 历史，并迁移 [GuanceCloud 旧 `gtrace` 分支](https://github.com/GuanceCloud/opentelemetry-php-instrumentation/tree/gtrace) 的跨平台构建与制品经验。当前处于开发和发行准备阶段，尚无 Beacon PHP Instrumentation 正式版本。
+本仓库采用非 Fork 的完整源码下游方式，保留官方 Git 历史，并吸收既有的跨平台构建与制品经验。当前处于开发和发行准备阶段，尚无 Beacon PHP Instrumentation 正式版本。
 
 ## 仓库职责
 
@@ -19,7 +19,7 @@ Beacon PHP Instrumentation 是 Beacon PHP 使用的原生自动插桩扩展，�
 - Beacon 开发版本：`0.1.0-dev`
 - PHP 验证范围：`8.2` 和 `8.4`，另在 macOS 与 Windows 上进行代表性构建
 
-精确提交及旧代码来源见 [`beacon/upstream.lock.json`](beacon/upstream.lock.json)。
+精确的官方基线提交见 [`beacon/upstream.lock.json`](beacon/upstream.lock.json)。
 
 ## 开发验证
 

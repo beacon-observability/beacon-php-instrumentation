@@ -96,12 +96,11 @@ def main() -> int:
     if workflows != ["beacon-ci.yml"]:
         fail(f"Expected exactly one Beacon workflow, found: {workflows}")
 
-    for source in ("upstream", "legacy"):
-        commit = lock.get(source, {}).get("commit", "")
-        if not re.fullmatch(r"[0-9a-f]{40}", commit):
-            fail(f"Invalid {source} commit: {commit}")
-        if not git_is_ancestor(commit):
-            fail(f"Locked {source} commit is not an ancestor of HEAD: {commit}")
+    upstream_commit = lock.get("upstream", {}).get("commit", "")
+    if not re.fullmatch(r"[0-9a-f]{40}", upstream_commit):
+        fail(f"Invalid upstream commit: {upstream_commit}")
+    if not git_is_ancestor(upstream_commit):
+        fail(f"Locked upstream commit is not an ancestor of HEAD: {upstream_commit}")
 
     github_ref_type = os.environ.get("GITHUB_REF_TYPE")
     github_ref_name = os.environ.get("GITHUB_REF_NAME", "")
