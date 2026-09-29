@@ -3,7 +3,7 @@
 set -euo pipefail
 
 example_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-beacon_version="${BEACON_VERSION:-1.0.0}"
+beacon_version="${BEACON_VERSION:-1.0.1}"
 php_version="${PHP_VERSION:-8.4}"
 app_port="${APP_PORT:-18082}"
 otlp_traces_endpoint="${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://127.0.0.1:9529/otel/v1/traces}"

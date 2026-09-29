@@ -75,7 +75,7 @@ positive received-byte delta. No manual span creation is used.
 The defaults can be overridden when needed:
 
 ```shell
-BEACON_VERSION=1.0.0 \
+BEACON_VERSION=1.0.1 \
 PHP_VERSION=8.4 \
 APP_PORT=18082 \
 OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=http://127.0.0.1:9529/otel/v1/traces \
