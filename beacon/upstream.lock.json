@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "product": "Beacon PHP Instrumentation",
-  "beacon_version": "1.0.0",
+  "beacon_version": "1.0.1",
   "upstream": {
     "repository": "https://github.com/open-telemetry/opentelemetry-php-instrumentation.git",
     "tag": "1.4.2",

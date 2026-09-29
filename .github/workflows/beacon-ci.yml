@@ -31,13 +31,31 @@ jobs:
           check-path: ext
 
   linux:
-    name: Linux / PHP ${{ matrix.php }}
+    name: Linux / ${{ matrix.arch }} / PHP ${{ matrix.php }}
     needs: validate
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     strategy:
       fail-fast: false
       matrix:
-        php: ['8.2', '8.4']
+        include:
+          - php: '8.2'
+            runner: ubuntu-24.04
+            arch: x86_64
+          - php: '8.3'
+            runner: ubuntu-24.04
+            arch: x86_64
+          - php: '8.4'
+            runner: ubuntu-24.04
+            arch: x86_64
+          - php: '8.2'
+            runner: ubuntu-24.04-arm
+            arch: arm64
+          - php: '8.3'
+            runner: ubuntu-24.04-arm
+            arch: arm64
+          - php: '8.4'
+            runner: ubuntu-24.04-arm
+            arch: arm64
     defaults:
       run:
         working-directory: ext
@@ -50,6 +68,14 @@ jobs:
         uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # 2.37.1
         with:
           php-version: ${{ matrix.php }}
+      - name: Verify runner architecture
+        shell: bash
+        run: |
+          actual="$(uname -m)"
+          case "${{ matrix.arch }}:${actual}" in
+            x86_64:x86_64|arm64:aarch64|arm64:arm64) ;;
+            *) echo "Unexpected runner architecture: ${actual}" >&2; exit 1 ;;
+          esac
       - name: Build
         run: |
           phpize
@@ -63,7 +89,7 @@ jobs:
         shell: bash
         run: |
           source ../beacon/version.properties
-          asset="beacon-php-instrumentation-${BEACON_VERSION}-php${{ matrix.php }}-nts-linux-x86_64"
+          asset="beacon-php-instrumentation-${BEACON_VERSION}-php${{ matrix.php }}-nts-linux-${{ matrix.arch }}"
           mkdir -p "binaries/${asset}"
           cp modules/opentelemetry.so "binaries/${asset}/opentelemetry.so"
           cp ../beacon/ASSET-README.md "binaries/${asset}/README.md"
@@ -77,9 +103,13 @@ jobs:
           if-no-files-found: error
 
   macos:
-    name: macOS / PHP 8.4
+    name: macOS / arm64 / PHP ${{ matrix.php }}
     needs: validate
-    runs-on: macos-latest
+    runs-on: macos-15
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.2', '8.3', '8.4']
     defaults:
       run:
         working-directory: ext
@@ -91,7 +121,9 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # 2.37.1
         with:
-          php-version: '8.4'
+          php-version: ${{ matrix.php }}
+      - name: Verify runner architecture
+        run: test "$(uname -m)" = arm64
       - name: Build and test
         env:
           TEST_PHP_ARGS: '-q'
@@ -100,6 +132,22 @@ jobs:
           ./configure
           make
           make test TESTS=--show-diff
+      - name: Package candidate binary
+        shell: bash
+        run: |
+          source ../beacon/version.properties
+          asset="beacon-php-instrumentation-${BEACON_VERSION}-php${{ matrix.php }}-nts-macos-arm64"
+          mkdir -p "binaries/${asset}"
+          cp modules/opentelemetry.so "binaries/${asset}/opentelemetry.so"
+          cp ../beacon/ASSET-README.md "binaries/${asset}/README.md"
+          tar -C binaries -czf "binaries/${asset}.tar.gz" "${asset}"
+          echo "ASSET=${asset}" >> "$GITHUB_ENV"
+      - name: Upload candidate binary
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: ${{ env.ASSET }}
+          path: ext/binaries/${{ env.ASSET }}.tar.gz
+          if-no-files-found: error
 
   windows:
     name: Windows / PHP ${{ matrix.php }} / ${{ matrix.ts }}
@@ -113,6 +161,12 @@ jobs:
         include:
           - php: '8.2'
             ts: nts
+          - php: '8.2'
+            ts: ts
+          - php: '8.3'
+            ts: nts
+          - php: '8.3'
+            ts: ts
           - php: '8.4'
             ts: nts
           - php: '8.4'
