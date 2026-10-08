@@ -1,16 +1,16 @@
-# 上游同步
+# Upstream Synchronization
 
-## 远程仓库
+## Git Remotes
 
-- `origin`：`beacon-observability/beacon-php-instrumentation`，Beacon 下游。
-- `upstream`：`open-telemetry/opentelemetry-php-instrumentation`，官方只读来源。
+- `origin`: `beacon-observability/beacon-php-instrumentation`, the Beacon downstream repository.
+- `upstream`: `open-telemetry/opentelemetry-php-instrumentation`, the official read-only source.
 
-## 同步步骤
+## Synchronization Steps
 
-1. 从 `main` 创建独立同步分支，抓取 `upstream` 的标签和提交。
-2. 核对目标官方 Release、完整提交、PHP 支持范围、扩展 ABI 变化和安全修复。
-3. 合并目标官方提交，不使用目录覆盖或改写历史。
-4. 保留并重新验证 Beacon 发行标识、项目校验、制品构建和组件联调。
-5. 更新 `beacon/upstream.lock.json` 中的官方标签、提交和扩展版本。
-6. 运行项目校验、PHPT、跨平台构建以及 `beacon-php` 自动插桩联调。
-7. 通过 PR 合并；不直接向 `upstream` 推送。
+1. Create a separate synchronization branch from `main` and fetch tags and commits from `upstream`.
+2. Verify the target official release, full commit hash, supported PHP versions, extension ABI changes, and security fixes.
+3. Merge the target official commit without overwriting directories or rewriting history.
+4. Preserve and revalidate the Beacon distribution identity, project checks, artifact builds, and component integration.
+5. Update the official tag, commit, and extension version in `beacon/upstream.lock.json`.
+6. Run project checks, PHPT tests, cross-platform builds, and `beacon-php` auto-instrumentation integration tests.
+7. Merge through a pull request; never push directly to `upstream`.

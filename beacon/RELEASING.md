@@ -1,16 +1,16 @@
-# 发行准备
+# Release Preparation
 
-Beacon 产品版本与官方扩展版本独立：产品版本标识 Beacon 制品，官方扩展版本表示所采用的兼容代码基线。
+The Beacon product version is independent of the official extension version: the product version identifies Beacon artifacts, while the official extension version identifies the compatible code baseline used.
 
-## 首次发行前
+## Before the First Release
 
-1. 将 `beacon/version.properties` 的 `BEACON_VERSION` 从开发版本改为正式版本，并同步 `beacon/upstream.lock.json`。
-2. 确认 `ext/php_opentelemetry.h` 和 `ext/package.xml` 的扩展版本与锁定的官方基线一致，发行来源为 `Beacon`。
-3. 运行 `python3 beacon/scripts/check-project.py` 和完整 PHPT。
-4. 验证 Linux、Windows、macOS 代表性环境；记录 PHP 版本、线程安全模式、架构和已知限制。
-5. 使用同一提交生成 Linux、Windows 和 PECL 兼容源码候选制品，核对文件名、模块信息和 SHA-256。
-6. 与 `beacon-php` 固定候选包联调，验证自动插桩和实际接收端数据链路；同时确认不加载扩展时手动插桩仍可使用。
-7. 创建与产品版本一致的签名标签 `v<BEACON_VERSION>`。工作流只创建草稿 Release，人工复核后再发布。
-8. 从公开 Release 重新下载并安装复验，然后更新产品仓库的固定版本入口。
+1. Change `BEACON_VERSION` in `beacon/version.properties` from a development version to a release version, and update `beacon/upstream.lock.json` to match.
+2. Confirm that the extension versions in `ext/php_opentelemetry.h` and `ext/package.xml` match the locked official baseline, and that the distribution is `Beacon`.
+3. Run `python3 beacon/scripts/check-project.py` and the complete PHPT suite.
+4. Validate representative Linux, Windows, and macOS environments. Record the PHP version, thread-safety mode, architecture, and known limitations.
+5. Generate candidate Linux and Windows binaries and PECL-compatible source artifacts from the same commit. Verify filenames, module information, and SHA-256 checksums.
+6. Run integration tests with a pinned `beacon-php` candidate package to verify auto-instrumentation and the data path to the actual receiver. Also confirm that manual instrumentation works without loading the extension.
+7. Create a signed tag `v<BEACON_VERSION>` matching the product version. The workflow creates only a draft release; publish it after manual review.
+8. Download the artifacts again from the public release and revalidate installation, then update the pinned version reference in the product repository.
 
-已发布的标签和制品不可覆盖；修复后发布新版本。带 `-dev` 后缀的版本不能触发正式发行。
+Published tags and artifacts must not be overwritten; publish fixes as a new version. Versions with a `-dev` suffix cannot trigger an official release.
