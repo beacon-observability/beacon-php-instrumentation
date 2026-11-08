@@ -14,3 +14,14 @@ The Beacon product version is independent of the official extension version: the
 8. Download the artifacts again from the public release and revalidate installation, then update the pinned version reference in the product repository.
 
 Published tags and artifacts must not be overwritten; publish fixes as a new version. Versions with a `-dev` suffix cannot trigger an official release.
+
+## CI build environments
+
+The Windows matrix uses the maintained official `php/php-windows-builder`
+extension action, pinned to a full commit. It selects PHP's matching compiler,
+builds the checked-out extension, and runs PHPT tests before packaging. Beacon
+candidate archives contain the DLL extracted from that tested package. PHP
+8.2/8.3 use the `vs16` asset label; PHP 8.4 uses `vs17`, independently of the
+runner's default Visual Studio installation. The macOS and Linux PHP setup
+action is also pinned; macOS arm64 can use its supported cached PHP builds.
+Branch and PR artifacts remain candidates, never official installation sources.
