@@ -7,7 +7,11 @@ This repository maintains the native hook extension required for PHP auto-instru
 - Official upstream source: `open-telemetry/opentelemetry-php-instrumentation`.
 - Beacon mainline: a downstream repository built on the complete official history, rather than a GitHub fork.
 
-The initial development branch uses official version `1.4.2` as its code baseline. Cross-platform builds, validation, and examples have been adapted to the current official code.
+Beacon product 1.1.0 adopts official extension 1.5.0 at commit
+`dd0e147a80d0aeac15c95ec119b146c0b2bc3285`. The native module retains the
+OpenTelemetry hook API and module identity, with Beacon distribution metadata.
+Product and upstream extension versions are independently pinned in
+`beacon/upstream.lock.json`.
 
 ## Usage Boundaries
 
