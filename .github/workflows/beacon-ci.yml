@@ -179,6 +179,12 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
+      # The official builder expects config.w32 at its invocation root.
+      # Stage this repository's ext/ sources without changing the checkout commit.
+      - name: Stage native extension sources
+        shell: pwsh
+        working-directory: .
+        run: Copy-Item -Path ext/* -Destination . -Recurse -Force
       # The former php/setup-php-sdk action is archived. Its replacement
       # handles numbered PHP rebuilds and selects the matching MSVC toolset.
       - name: Build and test extension
